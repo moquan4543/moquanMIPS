@@ -1,12 +1,13 @@
 //top module
 //將五級流水線各個階段的module實例化、連接
-module moquanmips{
+`include "macros.v"
+module moquanmips(
     input wire clk,
     input wire rst,
     input wire[`RegBus] rom_data_i,
     output wire[`RegBus] rom_addr_o,
     output wire rom_ce_o
-};
+);
     //連接if/id、id
     wire[`InstAddrBus] pc;
     wire[`InstAddrBus] id_pc_i;
@@ -91,7 +92,7 @@ module moquanmips{
         .clk(clk), .rst(rst),
         .we(wb_wreg_i), .waddr(wb_wd_i),
         .wdata(wb_wdata_i), .re1(reg1_read),
-        .raddr1(reg_addr), .rdata1(reg1_data),
+        .raddr1(reg1_addr), .rdata1(reg1_data),
         .re2(reg2_read), .raddr2(reg2_addr),
         .rdata2(reg2_data)
     );
@@ -101,8 +102,8 @@ module moquanmips{
         .clk(clk), .rst(rst),
         //from id module
         .id_aluop(id_aluop_o), .id_alusel(id_alusel_o),
-        .id_reg1(id_reg1_o), id_reg2(id_reg2_o),
-        .id_wd(id_wd_o), id_wreg(id_wreg_o),
+        .id_reg1(id_reg1_o), .id_reg2(id_reg2_o),
+        .id_wd(id_wd_o), .id_wreg(id_wreg_o),
         
         //to ex module
         .ex_aluop(ex_aluop_i), .ex_alusel(ex_alusel_i),

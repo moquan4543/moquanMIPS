@@ -1,4 +1,5 @@
-module if_id{
+`include "macros.v"
+module if_id(
 	input wire	clk,
 	input wire rst,
 	
@@ -7,7 +8,7 @@ module if_id{
 	
 	output reg[`InstAddrBus] id_pc,
 	output reg[`InstBus] id_inst
-};
+);
 
 	always @ (posedge clk) begin
 		if(rst == `RstEnable) begin

@@ -1,5 +1,6 @@
 //將執行階段取得的結果，在下一個時鐘週期傳遞給訪存階段
-module ex_mem{
+`include "macros.v"
+module ex_mem(
     input wire clk,
     input wire rst,
 
@@ -12,7 +13,7 @@ module ex_mem{
     output reg[`RegAddrBus] mem_wd,
     output reg mem_wreg,
     output reg[`RegBus] mem_wdata
-}
+);
     always @ (posedge clk) begin
         if(rst == `RstEnable) begin
             mem_wd <= `NOPRegAddr;

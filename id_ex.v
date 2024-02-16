@@ -1,5 +1,6 @@
+`include "macros.v"
 //將譯碼階段的結果在時鐘上升沿傳遞到執行階段
-module id_ex{
+module id_ex(
     input wire clk,
     input wire rst,
 
@@ -18,7 +19,7 @@ module id_ex{
     output reg[`RegBus] ex_reg2,
     output reg[`RegAddrBus] ex_wd,
     output reg ex_wreg
-};
+);
     always @ (posedge clk) begin
         if(rst == `RstEnable) begin
             ex_aluop <= `EXE_NOP_OP;

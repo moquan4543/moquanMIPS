@@ -1,4 +1,5 @@
 //以byte尋址
+`include "macros.v"
 module inst_rom(
     input wire ce,
     input wire[`InstAddrBus] addr,

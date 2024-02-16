@@ -1,4 +1,5 @@
-module regfile{
+`include "macros.v"
+module regfile(
 	input wire clk,
 	input wire rst,
 	
@@ -11,13 +12,13 @@ module regfile{
 	//read port
 	input wire re1,
 	input wire[`RegAddrBus] raddr1,
-	ouput reg[`RegBus] rdata1,
+	output reg[`RegBus] rdata1,
 	
 	//read port2
 	input wire re2,
 	input wire[`RegAddrBus] raddr2,
 	output reg[`RegBus] rdata2
-};
+);
 
 	//32個32位寄存器
 	reg[`RegBus] regs[0:`RegNum-1];
@@ -38,7 +39,7 @@ module regfile{
 		end else if(raddr1 == `RegNumLog2'h0)begin
 			rdata1 <= `ZeroWord;
 		end else if((raddr1 == waddr) && (we == `WriteEnable) && (re1 == `ReadEnable)) begin
-			rdata <= wdata;
+			rdata1 <= wdata;
 		end else if(re1 == `ReadEnable) begin
 			rdata1 <= regs[raddr1];
 		end else begin

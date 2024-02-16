@@ -1,3 +1,4 @@
+`include "macros.v"
 module moquanmips_min_sopc (
     input wire clk,
     input wire rst
@@ -9,15 +10,15 @@ module moquanmips_min_sopc (
     wire rom_ce;
 
     //例化moquan MIPS
-    openmips openmips0(
+    moquanmips moquanmips0(
         .clk(clk), .rst(rst),
         .rom_addr_o(inst_addr), .rom_data_i(inst),
-        .rom_ce(rom_ce)
+        .rom_ce_o(rom_ce)
     );
 
     //例化rom
     inst_rom inst_rom0(
         .ce(rom_ce),
-        addr(inst_addr), .inst(inst)
+        .addr(inst_addr), .inst(inst)
     );
 endmodule

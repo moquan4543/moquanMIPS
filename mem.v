@@ -1,4 +1,5 @@
-module mem{
+`include "macros.v"
+module mem(
     input wire rst,
 
     //來自執行階段的訊號
@@ -10,7 +11,7 @@ module mem{
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
     output reg[`RegBus] wdata_o
-};
+);
 
     always @ (*) begin
         if(rst == `RstEnable)begin

@@ -1,5 +1,6 @@
 //回寫階段由Regfile完成
-module mem_wb{
+`include "macros.v"
+module mem_wb(
     input wire clk,
     input wire rst,
 
@@ -11,7 +12,7 @@ module mem_wb{
     output reg[`RegAddrBus] wb_wd,
     output reg wb_wreg,
     output reg[`RegBus] wb_wdata
-}
+);
 
     always @ (posedge clk) begin
         if(rst == `RstEnable)begin

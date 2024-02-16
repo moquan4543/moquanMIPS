@@ -1,6 +1,7 @@
 //都是組合邏輯電路
-module id{
-    input wire rst;
+`include "macros.v"
+module id(
+    input wire rst,
     input wire[`InstAddrBus] pc_i,
     input wire[`InstBus] inst_i,
     
@@ -21,7 +22,7 @@ module id{
     output reg[`RegBus] reg2_o,
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o
-}
+);
     //fetch指令的指令碼、功能碼
     wire[5:0] op = inst_i[31:26];
     wire[4:0] op2 = inst_i[10:6];

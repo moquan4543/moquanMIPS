@@ -1,4 +1,5 @@
-module ex{
+`include "macros.v"
+module ex(
     input wire rst,
 
     //譯碼階段傳遞過來的訊號
@@ -13,7 +14,7 @@ module ex{
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
     output reg[`RegBus] wdata_o
-}
+);
     //儲存運算結果
     reg[`RegBus] logicout;
 
