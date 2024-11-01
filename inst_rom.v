@@ -1,3 +1,4 @@
+//指令存儲器
 //以byte尋址
 `include "macros.v"
 module inst_rom(
