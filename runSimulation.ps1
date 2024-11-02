@@ -11,5 +11,5 @@ Start-Process -NoNewWindow -FilePath "vlog" -ArgumentList "*.v -work work -incr 
 
 #仿真
 Write-Output "Starting simulation..."
-Start-Process -NoNewWindow -FilePath "vsim" -ArgumentList "work.moquanmips_min_sopc_tb -do `"run -all`"" -Wait
+Start-Process -NoNewWindow -FilePath "vsim" -ArgumentList "work.moquanmips_min_sopc_tb" -Wait
 Write-Output "Simulation completed."
