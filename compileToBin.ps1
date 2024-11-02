@@ -1,0 +1,1 @@
+Start-Process -NoNewWindow -FilePath "ubuntu" -ArgumentList "run `"cp inst_rom.S ~ && /opt/mips-4.3/bin/mips-sde-elf-as -mips32 ~/inst_rom.S -o ~/inst_rom.o && /opt/mips-4.3/bin/mips-sde-elf-ld -T /opt/ram.ld ~/inst_rom.o -o ~/inst_rom.om && /opt/mips-4.3/bin/mips-sde-elf-objcopy -O binary ~/inst_rom.om inst_rom.bin && exit`"" -Wait
