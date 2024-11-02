@@ -36,9 +36,9 @@ module regfile(
 	always @ (*) begin
 		if(rst == `RstEnable) begin
 			rdata1 <= `ZeroWord;
-		end else if(raddr1 == `RegNumLog2'h0)begin
+		end else if(raddr1 == `RegNumLog2'h0)begin //讀取的是$0
 			rdata1 <= `ZeroWord;
-		end else if((raddr1 == waddr) && (we == `WriteEnable) && (re1 == `ReadEnable)) begin
+		end else if((raddr1 == waddr) && (we == `WriteEnable) && (re1 == `ReadEnable)) begin //讀、寫為相同寄存器
 			rdata1 <= wdata;
 		end else if(re1 == `ReadEnable) begin
 			rdata1 <= regs[raddr1];
