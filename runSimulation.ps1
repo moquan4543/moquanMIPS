@@ -2,7 +2,7 @@
 $projectDir = "$PWD"
 
 #創建work
-if(-not(Test-Path -Path "$projectDir\.work")){
+if(-not(Test-Path -Path "$projectDir\work")){
     Start-Process -NoNewWindow -FilePath "vlib" -ArgumentList "work"
 }
 
