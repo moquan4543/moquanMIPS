@@ -33,7 +33,6 @@
 `define EXE_SRAV 6'b000111
 
 `define EXE_SYNC 6'b001111
-`define EXE_PREF 6'b110011
 `define EXE_SPECIAL_INST 6'b000000
 `define	EXE_NOP	6'b000000
 

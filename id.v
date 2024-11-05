@@ -146,8 +146,8 @@ module id(
                 default:begin
                 end
                 endcase
+            end
             `EXE_ORI: begin
-                //需將結果寫入dest reg，所以wreg_o是Enable
                 wreg_o <= `WriteEnable;
                 aluop_o <= `EXE_OR_OP;
                 alusel_o <= `EXE_RES_LOGIC;
@@ -180,20 +180,14 @@ module id(
             end
             `EXE_LUI: begin
                 wreg_o <= `WriteEnable;
-                aluop_o <= `EXE_LUI_OP;
+                //轉為ori
+                //lui rt, imm == ori rt, $0,(imm||0^16)
+                aluop_o <= `EXE_OR_OP;
                 alusel_o <= `EXE_RES_LOGIC;
                 reg1_read_o <= 1'b1;
                 reg2_read_o <= 1'b0;
                 imm <= {inst_i[15:0], 16'h0};
                 wd_o <= inst_i[20:16];
-                instvalid <= `InstValid;
-            end
-            `EXE_PREF: begin
-                wreg_o <= `WriteDisable;
-                aluop_o <= `EXE_NOP_OP;
-                alusel_o <= `EXE_RES_NOP;
-                reg1_read_o <= 1'b0;
-                reg2_read_o <= 1'b0;
                 instvalid <= `InstValid;
             end
             default:begin
